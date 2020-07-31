@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/polls/static/css/main.27fd15f6.chunk.css",
+    "main.js": "/polls/static/js/main.f614b92c.chunk.js",
+    "main.js.map": "/polls/static/js/main.f614b92c.chunk.js.map",
+    "runtime-main.js": "/polls/static/js/runtime-main.d0b27b33.js",
+    "runtime-main.js.map": "/polls/static/js/runtime-main.d0b27b33.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/polls/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.5a9fc3ab.chunk.js": "/polls/static/js/2.5a9fc3ab.chunk.js",
+    "static/js/2.5a9fc3ab.chunk.js.map": "/polls/static/js/2.5a9fc3ab.chunk.js.map",
+    "index.html": "/polls/index.html",
+    "precache-manifest.738bc4073e6dd25e6c665f9f20fdafa7.js": "/polls/precache-manifest.738bc4073e6dd25e6c665f9f20fdafa7.js",
+    "service-worker.js": "/polls/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/polls/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.27fd15f6.chunk.css.map": "/polls/static/css/main.27fd15f6.chunk.css.map",
+    "static/js/2.5a9fc3ab.chunk.js.LICENSE.txt": "/polls/static/js/2.5a9fc3ab.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d0b27b33.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.5a9fc3ab.chunk.js",
+    "static/css/main.27fd15f6.chunk.css",
+    "static/js/main.f614b92c.chunk.js"
+  ]
+}
