@@ -1,23 +1,25 @@
 import React,{useState} from 'react';
-import {Button, Form, FormGroup,Input} from 'reactstrap';
-import AddPollModal from './AddPollModal';
+import { Form, FormGroup,Input} from 'reactstrap';
+import PollModal from './AddPollModal';
+import PollList from './PollList';
 
-function Sidebar() {
+function Sidebar({polls,selectPoll,handleSearch,submit}) {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-
+   
     return (
         <div>
             <Form inline>
                 <FormGroup className="mr-2">
-                    <Input type="text" name="serach" placeholder="Search Polls"></Input>
-
+                    <Input type="search" name="search" placeholder="Search Polls" 
+                         onChange={e => handleSearch(e.target.value)} 
+                        />
                 </FormGroup>
-                {/* <Button color="primary" modal={modal} onClick={toggle}>Add</Button> */}
-                <AddPollModal modal={modal} toggle={toggle}/>
+                <PollModal modal={modal} toggle={toggle} submit={submit}/>
             </Form>
             <div className="mt-5">
                 <h3>Lists of polls</h3>
+                <PollList polls={polls} selectPoll={selectPoll}/>
 
             </div>
         </div>
