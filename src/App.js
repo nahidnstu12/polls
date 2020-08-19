@@ -15,6 +15,7 @@ function App() {
 	useEffect(()=>{
 		setPolls(Polls);
 	},[])
+
 	const selectPoll = (pollId) =>{
 		const poll = polls.find(p => pollId === p.id);
 		setSelectedPoll(poll);
@@ -29,17 +30,45 @@ function App() {
 		poll.opinions = [];
 		setPolls(polls.concat(poll))
 	}
+	
+	const getOpinion = res => {
+		const poll = polls.find(p => p.id === res.pollId)
+		const option = poll.options.find(opt => opt.id === res.selectedOption);
+		poll.totalVote++;
+		option.vote++;
+		const opinion = {
+			id:shortid.generate(),
+			name:res.name,
+			selectedOption:res.selectedOption
+		};
+		poll.opinions.push(opinion);
+		setPolls(polls);
+
+	}
+	const updatePoll = updatePoll =>{
+		const poll = polls.find(p => p.id === updatePoll.id)
+		poll.title = updatePoll.title;
+		poll.description = updatePoll.description;
+		poll.options = updatePoll.opinions
+
+		setPolls(polls);
+	}
+	const deletePoll = pollId => {
+		const poll = polls.filter(p => p.id !== pollId)
+		setPolls(poll);
+		// selectedPoll({});
+
+	}
 
   return (
     <Container className="my-5">
       <Row>
         <Col md={4}>
           <Sidebar polls={polls} selectPoll= {selectPoll} handleSearch={handleSearch} submit={addNewPoll}
-
 		  />
         </Col>
         <Col md={8}>
-			{/* <MainContent /> */}
+			<MainContent poll={selectedPoll}  getOpinion={getOpinion} deletePoll= {deletePoll} submit={updatePoll} />
 		</Col>
       </Row>
     </Container>

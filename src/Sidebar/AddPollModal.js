@@ -18,7 +18,7 @@ const defaultOptions = [
     {id:shortid.generate(),value:'',vote:0},
 ];
 
-function PollModal({modal,toggle,submit}) {
+function PollModal({modal,toggle,submit,btnValue,header}) {
 
     const [basetitle,setTitle] = useState('');
     const [descript,setDescript] = useState('');
@@ -117,7 +117,7 @@ function PollModal({modal,toggle,submit}) {
             // setTitle('');
             // setDescript('');
             // setOptions([]);
-            
+
              setErrors({});
         }else{
             setErrors(errors);
@@ -128,9 +128,9 @@ function PollModal({modal,toggle,submit}) {
 
     return (
         <div>
-            <Button color="success" onClick={toggle}>Add Poll</Button>
+            {/* <Button color="success" onClick={toggle}>Add Poll</Button> */}
             <Modal isOpen={modal} toggle={toggle} unmountOnClose={true}>
-                <ModalHeader toggle={toggle}>Create A New Poll</ModalHeader>
+                <ModalHeader toggle={toggle}>{header}</ModalHeader>
                 <ModalBody>
                 <Form onSubmit={ handleSubmit }>
                 <FormGroup>
@@ -151,7 +151,7 @@ function PollModal({modal,toggle,submit}) {
                        </div>
                    ))}
                 </FormGroup>
-                <Button color="primary">Create Poll</Button>
+                <Button color="primary">{btnValue}</Button>
             </Form>
             </ModalBody>
             
