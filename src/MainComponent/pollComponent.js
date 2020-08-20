@@ -10,9 +10,6 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
-    const handleEditPoll = () =>{
-
-    }
     const handleSubmit = e =>{
         e.preventDefault();
         const {errors,isValid} = validate();
@@ -22,7 +19,6 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
                 name,
                 selectedOption
             })
-
             // Resetting
            e.target.reset();
            setName('');
@@ -31,7 +27,6 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
         }else{
             setErrors(errors);
         }
-
     }
     const validate = () =>{
         const errors = {};
@@ -41,14 +36,20 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
         if(!name){
             errors.name = "Please provide a name";
         }
-
+        else if(name.length < 3){
+            errors.title = 'Name too short';
+        }
         return {
             errors,
             isValid:Object.keys(errors).length === 0
         }
     }
-
-    
+    const handleDelete = () =>{
+        const confirm = window.confirm("Are You Sure to perform this action?");
+        if(confirm){
+        deletePoll(poll.id)
+        }
+    }
     return (
         <div>
         
@@ -60,10 +61,10 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
                 </Col>
                 <Col>
                     <Button color="warning" className="mr-2" onClick={toggle}>Edit</Button>
-                    <Button color="danger" onClick={()=> deletePoll(poll.id)}>Delete</Button>
+                    <Button color="danger" onClick={handleDelete}>Delete</Button>
                 </Col>
             </Row>
-            <PollModal modal={modal} toggle={toggle} submit={submit} btnValue="Update Poll" header="Update Poll Form" />
+            <PollModal modal={modal} toggle={toggle} submit={submit} btnValue="Update Poll" header="Update Poll Form" poll={poll} isUpdate={true}/>
 
             <Form onSubmit = {handleSubmit}>
             {poll.options.map((opt)=>(
@@ -78,7 +79,6 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
                     <Badge color="danger" className="p-3" style={{ fontSize: "100%" }}>{poll.totalVote > 0 ? Math.ceil((100*opt.vote) / poll.totalVote): 0 }%</Badge>
                 </Col>
                 {errors.selectOption && <FormFeedback>{errors.selectOption}</FormFeedback>}
-
             </Row>
             ))}
             
@@ -87,11 +87,8 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
                 <Input type="text" name="name" placeholder="Your name" onChange={(e)=>setName(e.target.value)} invalid={errors.name ? true : false}/>
                 {errors.name && <FormFeedback>{errors.name}</FormFeedback>}
                 <Button color="success" className="my-2">Submit Your Opinion</Button>
-            </FormGroup>
-            
+            </FormGroup> 
             </Form>
-            
-            
         </div>
     )
 }

@@ -12,7 +12,7 @@ function Sidebar({polls,selectPoll,handleSearch,submit}) {
             <Form inline>
                 <FormGroup className="mr-2">
                     <Input type="search" name="search" placeholder="Search Polls" 
-                         onChange={e => handleSearch(e.target.value)} 
+                         onChange={e => handleSearch(e.target.value.toLowerCase())} 
                         />
                 </FormGroup>
                 <Button color="success" onClick={toggle}>Add Poll</Button>

@@ -21,7 +21,10 @@ function App() {
 		setSelectedPoll(poll);
 	}
 	const handleSearch = val => {
-
+		setSearchTerm(val);
+	}
+	const performSearch = () =>{
+		return polls.filter(poll => poll.title.toLowerCase().includes(searchTerm));
 	}
 	const addNewPoll = poll => {
 		poll.id = shortid.generate();
@@ -30,7 +33,7 @@ function App() {
 		poll.opinions = [];
 		setPolls(polls.concat(poll))
 	}
-	
+
 	const getOpinion = res => {
 		const poll = polls.find(p => p.id === res.pollId)
 		const option = poll.options.find(opt => opt.id === res.selectedOption);
@@ -49,22 +52,23 @@ function App() {
 		const poll = polls.find(p => p.id === updatePoll.id)
 		poll.title = updatePoll.title;
 		poll.description = updatePoll.description;
-		poll.options = updatePoll.opinions
-
+		poll.options = updatePoll.options
 		setPolls(polls);
 	}
 	const deletePoll = pollId => {
 		const poll = polls.filter(p => p.id !== pollId)
 		setPolls(poll);
-		// selectedPoll({});
+		setSelectedPoll({})
 
 	}
+	const allPolls = performSearch();
 
   return (
+	  
     <Container className="my-5">
       <Row>
         <Col md={4}>
-          <Sidebar polls={polls} selectPoll= {selectPoll} handleSearch={handleSearch} submit={addNewPoll}
+          <Sidebar polls={allPolls} selectPoll= {selectPoll} handleSearch={handleSearch} submit={addNewPoll} searchTerm={searchTerm}
 		  />
         </Col>
         <Col md={8}>
