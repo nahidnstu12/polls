@@ -6,8 +6,8 @@ function PollList({polls,selectPoll}) {
     return (
        <ListGroup>
            {polls.map(poll => (
-               <ListGroupItem key={poll.id} style={{ cursor: "pointer"}} title={poll.title} onClick={()=> selectPoll(poll.id)}>
-                {poll.title.length > 30 ? poll.title.substr(0,30)+"..." : poll.title}
+               <ListGroupItem key={poll.id} style={{ cursor: "pointer",fontWeight:"600"}} title={poll.title} onClick={()=> selectPoll(poll.id)} className="text-primary" >
+                {poll.title.length > 35 ? poll.title.substr(0,35)+"..." : poll.title}
                </ListGroupItem>
            ))}
        </ListGroup>

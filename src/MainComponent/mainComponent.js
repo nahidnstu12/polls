@@ -1,6 +1,6 @@
 import React from 'react';
 import Poll from './pollComponent';
-
+import OpinionList from './OpinionList';
 function MainContent({poll,getOpinion,deletePoll,submit}) {
    
     return (
@@ -11,7 +11,8 @@ function MainContent({poll,getOpinion,deletePoll,submit}) {
         </div> }
 
         {Object.keys(poll).length !== 0 &&   <Poll poll={poll} getOpinion={getOpinion} deletePoll={deletePoll} submit={submit}/>}
-        
+
+        {Object.keys(poll).length !== 0 && <OpinionList poll={poll} />}
         </>
     )
 }
