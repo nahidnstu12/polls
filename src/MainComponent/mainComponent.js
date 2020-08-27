@@ -1,8 +1,8 @@
 import React from 'react';
 import Poll from './pollComponent';
 import OpinionList from './OpinionList';
+
 function MainContent({poll,getOpinion,deletePoll,submit}) {
-   
     return (
         <>
         {Object.keys(poll).length === 0 && <div>

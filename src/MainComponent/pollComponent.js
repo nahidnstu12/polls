@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import {Form,FormGroup,CustomInput,Row,Col, Button,Badge, Label,Input,FormFeedback} from 'reactstrap';
-import PollModal from '../Sidebar/AddPollModal';
+import PollModal from '../Sidebar/AddPollModal'
 
 function Poll({poll,getOpinion,deletePoll,submit}) {
 
@@ -9,7 +9,7 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
     const [errors,setErrors] = useState({});
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
-
+    
     const handleSubmit = e =>{
         e.preventDefault();
         const {errors,isValid} = validate();
@@ -64,7 +64,7 @@ function Poll({poll,getOpinion,deletePoll,submit}) {
                     <Button color="danger" onClick={handleDelete}>Delete</Button>
                 </Col>
             </Row>
-            <PollModal modal={modal} toggle={toggle} submit={submit} btnValue="Update Poll" header="Update Poll Form" poll={poll} isUpdate={true}/>
+                <PollModal modal={modal} toggle={toggle} submit={submit} btnValue="Update Poll" header="Update Poll Form" poll={poll} isUpdate={true}/>            
 
             <Form onSubmit = {handleSubmit}>
             {poll.options.map((opt)=>(

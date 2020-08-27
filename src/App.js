@@ -1,5 +1,4 @@
-import React,{useState,useEffect} from 'react';
-import './App.css';
+import React,{useState,useEffect,useCallback} from 'react';
 import {Container,Row,Col} from 'reactstrap';
 import Sidebar from  './Sidebar/sidebarComponent';
 import MainContent from './MainComponent/mainComponent';
@@ -16,10 +15,10 @@ function App() {
 		setPolls(Polls);
 	},[])
 
-	const selectPoll = (pollId) =>{
+	const selectPoll = useCallback( (pollId) =>{
 		const poll = polls.find(p => pollId === p.id);
 		setSelectedPoll(poll);
-	}
+	},[polls]);
 	const handleSearch = val => {
 		setSearchTerm(val);
 	}
@@ -62,7 +61,6 @@ function App() {
 
 	}
 	const allPolls = performSearch();
-
   return (
 	  
     <Container className="my-5">

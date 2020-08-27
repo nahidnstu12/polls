@@ -9,7 +9,6 @@ function OpinionList({poll}) {
         setOpinion(filterdData);
     }
     // need to improve live show 
-
     return (
         <>
         <h3 className="my-4 text-primary">Names of Perticipants</h3>

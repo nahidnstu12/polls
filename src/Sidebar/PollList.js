@@ -2,7 +2,6 @@ import React from 'react'
 import {ListGroup,ListGroupItem}  from 'reactstrap';
 
 function PollList({polls,selectPoll}) {
-    
     return (
        <ListGroup>
            {polls.map(poll => (
