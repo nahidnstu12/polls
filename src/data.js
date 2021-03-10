@@ -39,3 +39,13 @@ export const Polls = [
     opinions:[]
 }
 ]
+
+export const newPoll = {
+    id:null,
+    title:"",
+    description:"",
+    options: [],
+    created: new Date(),
+    totalVote: 0,
+    opinions: []
+}
