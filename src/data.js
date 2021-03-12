@@ -1,3 +1,5 @@
+import shortid from 'shortid';
+
 export const Polls = [
     {
     id:'45',
@@ -40,12 +42,21 @@ export const Polls = [
 }
 ]
 
+const defaultOptions = [
+    { id: shortid.generate(), value: '', vote: 0 },
+    { id: shortid.generate(), value: '', vote: 0 },
+];
+
 export const newPoll = {
-    id:null,
     title:"",
     description:"",
-    options: [],
+    options: [...defaultOptions],
     created: new Date(),
     totalVote: 0,
     opinions: []
+}
+
+export const addPoll = {
+    title:"",
+    description:"",
 }
